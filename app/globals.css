@@ -116,6 +116,22 @@
   @apply text-4xl;
 }
 
+.fai-text {
+  @apply text-orange-400;
+}
+
+.fai-bg {
+  @apply bg-orange-400;
+}
+
+.ray-text {
+  @apply text-sky-400;
+}
+
+.ray-bg {
+  @apply bg-sky-400;
+}
+
 @layer base {
   * {
     @apply border-border outline-ring/50;

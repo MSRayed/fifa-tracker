@@ -11,6 +11,7 @@ import {
 } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
+import { useRouter } from "next/navigation";
 
 type FormValues = {
   fai_goals: number | string;
@@ -31,26 +32,45 @@ const NewGame = () => {
     },
   });
 
-  const onSubmit = (values: FormValues) => {
-    // convert numeric-like fields to numbers
+  const router = useRouter();
+
+  const onSubmit = async (values: FormValues) => {
     const normalize = (v?: number | string) =>
       v === undefined || v === "" ? undefined : Number(v);
     const payload = {
-      player1: {
+      faisal: {
         goals: normalize(values.fai_goals),
         shots: normalize(values.fai_shots),
         yellow: normalize(values.fai_yellow),
         red: normalize(values.fai_red),
       },
-      player2: {
+      rayed: {
         goals: normalize(values.ray_goals),
         shots: normalize(values.ray_shots),
         yellow: normalize(values.ray_yellow),
         red: normalize(values.ray_red),
       },
     };
-    console.log("New game:", payload);
-    // TODO: submit payload to API / state
+
+    try {
+      const res = await fetch("/api/matches", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(payload),
+      });
+
+      const data = await res.json();
+
+      if (!res.ok) throw new Error(data.error || "Failed to save match");
+
+      console.log("✅ Match saved successfully!");
+      form.reset();
+      alert("Game saved!");
+      router.push("/records");
+    } catch (error) {
+      console.error(error);
+      alert("❌ Failed to save game");
+    }
   };
 
   return (
@@ -63,7 +83,7 @@ const NewGame = () => {
           className="grid grid-cols-1 md:grid-cols-2 gap-6"
         >
           <div className="p-6 border rounded-lg">
-            <h2 className="text-2xl mb-4">Faisal</h2>
+            <h2 className="text-4xl mb-4 fai-text">Faisal</h2>
 
             <FormField
               control={form.control}
@@ -144,7 +164,7 @@ const NewGame = () => {
           </div>
 
           <div className="p-6 border rounded-lg">
-            <h2 className="text-2xl mb-4">Rayed</h2>
+            <h2 className="text-4xl mb-4 ray-text">Rayed</h2>
 
             <FormField
               control={form.control}
