@@ -27,8 +27,14 @@ type FormValues = {
 const NewGame = () => {
   const form = useForm<FormValues>({
     defaultValues: {
-      fai_goals: 0,
-      ray_goals: 0,
+      fai_goals: "", // required but keep as string to keep inputs controlled
+      fai_shots: "",
+      fai_yellow: "",
+      fai_red: "",
+      ray_goals: "",
+      ray_shots: "",
+      ray_yellow: "",
+      ray_red: "",
     },
   });
 
