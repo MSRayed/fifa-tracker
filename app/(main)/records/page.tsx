@@ -74,6 +74,9 @@ const RecordsPage = () => {
           <Link href="/new-game">
             <Button className="text-lg">New Game</Button>
           </Link>
+          <Link href="/analytics">
+            <Button className="text-lg">See Analytics</Button>
+          </Link>
         </div>
         <p>No matches yet! Start by adding one.</p>
       </div>
@@ -83,9 +86,12 @@ const RecordsPage = () => {
   return (
     <div>
       <h1 className="text-4xl mb-6">Records Page</h1>
-      <div className="flex justify-end mb-4">
+      <div className="flex justify-end mb-4 gap-x-6">
         <Link href="/new-game">
           <Button className="text-lg">New Game</Button>
+        </Link>
+        <Link href="/analytics">
+          <Button className="text-lg">See Analytics</Button>
         </Link>
       </div>
 
