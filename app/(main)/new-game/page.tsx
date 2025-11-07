@@ -24,7 +24,7 @@ type FormValues = {
   ray_red?: number | string;
 };
 
-const NewGame = () => {
+const NewGamePage = () => {
   const form = useForm<FormValues>({
     defaultValues: {
       fai_goals: "", // required but keep as string to keep inputs controlled
@@ -259,4 +259,4 @@ const NewGame = () => {
   );
 };
 
-export default NewGame;
+export default NewGamePage;

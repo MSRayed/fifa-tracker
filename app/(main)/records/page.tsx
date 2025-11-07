@@ -26,7 +26,7 @@ type Match = {
   rayed_red_cards?: number;
 };
 
-const Records = () => {
+const RecordsPage = () => {
   const [matches, setMatches] = useState<Match[]>([]);
   const [loading, setLoading] = useState(true);
 
@@ -116,4 +116,4 @@ const Records = () => {
   );
 };
 
-export default Records;
+export default RecordsPage;
