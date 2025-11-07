@@ -56,7 +56,7 @@ export default function PlayerBarChart({
             <YAxis
               label={{ value: yLabel, angle: -90, position: "insideLeft" }}
             />
-            <Tooltip />
+            <Tooltip wrapperClassName="text-black" />
             {/* <Legend /> */}
             <Bar
               dataKey="faisal"
